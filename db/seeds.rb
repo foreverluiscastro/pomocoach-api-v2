@@ -72,8 +72,8 @@ session_types = ["Study", "Break"]
 sessions_per_user = 20
 
 # Define the start and end dates for the simulation period
-start_date = Date.new(2024, 3, 1)
-end_date = Date.new(2024, 3, 31)
+start_date = Date.new(2024, 10, 1)
+end_date = Date.new(2024, 10, 31)
 
 # Iterate over each user
 User.all.each do |user|
