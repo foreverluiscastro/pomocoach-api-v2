@@ -21,7 +21,7 @@ class Api::OpenaiController < ApplicationController
 
 
       **Deliverables:**
-      - Offer actionable strategies to optimize study habits.
+      - Offer actionable strategies to optimize focus habits that fit the user profile information.
       - Ensure the response is concise and limited to 400 characters.
       - Focus solely on personalized advice without suggesting other applications.
 

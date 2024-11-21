@@ -76,7 +76,8 @@ datetime = DateTime.now
 # puts datetime
 # puts datetime.wday
 past_sunday = datetime - datetime.wday  # Subtract the current wday value to get the previous Sunday
-# puts past_sunday.day
+puts past_sunday.day
+puts datetime.day
 
 # Define the start and end dates for the simulation period
 start_date = DateTime.new(2024, 10, past_sunday.day) # simulate data from today forward
