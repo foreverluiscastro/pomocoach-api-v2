@@ -6,22 +6,21 @@ class Api::OpenaiController < ApplicationController
 
     # debugger
     prompt = <<~PROMPT
-      Analyze this user's study habits and provide advice for maximizing efficiency.
+      **Subject:** Analysis of Study Times to Enhance Efficiency
 
-      User Details:
+      **Objective:** Provide targeted recommendations to improve user's study routines.
+      **User Profile:**
       - Current Date: #{current_date}
       - Study Goal: #{@current_user.study_goal}
       - Daily Study Goal: #{@current_user.daily_goal} minutes
       - Additional Details: #{@current_user.details}
-
-      Weekly Study Sessions:
+      **Weekly Study Sessions Summary:**
       #{@current_user.pomo_sessions_for_the_week(time_range, current_date)}
+      **Deliverables:**
+      - Offer actionable strategies to optimize focus habits that fit the user profile information.
+      - Ensure the response is concise and limited to 400 characters.
+      - Focus solely on personalized advice without suggesting other applications.
 
-      Keep in mind total_time is represented in seconds
-
-      Please provide actionable advice in under 400 characters.
-
-      Please do not recommend other apps.
     PROMPT
 
     @response = OpenaiService.new(prompt).call

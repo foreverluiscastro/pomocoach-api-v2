@@ -14,6 +14,6 @@ class User < ApplicationRecord
     start_of_week = date.beginning_of_week
     end_of_week = date.end_of_week
 
-    self.pomo_sessions.where(date: start_of_week..end_of_week)
+    self.pomo_sessions.where(session_date: start_of_week..end_of_week)
   end
 end

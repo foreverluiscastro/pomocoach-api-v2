@@ -69,11 +69,19 @@ print("Seeding Sessions...\n")
 session_types = ["Study", "Break"]
 
 # Define the number of sessions per user
-sessions_per_user = 20
+sessions_per_user = 10
+
+# print("Today is the:", DateTime.now().day)
+datetime = DateTime.now
+# puts datetime
+# puts datetime.wday
+past_sunday = datetime - datetime.wday  # Subtract the current wday value to get the previous Sunday
+puts past_sunday.day
+puts datetime.day
 
 # Define the start and end dates for the simulation period
-start_date = Date.new(2024, 10, 1)
-end_date = Date.new(2024, 10, 31)
+start_date = DateTime.new(2024, 10, past_sunday.day) # simulate data from today forward
+end_date = DateTime.new(2024, 10, datetime.day)
 
 # Iterate over each user
 User.all.each do |user|
@@ -82,13 +90,17 @@ User.all.each do |user|
     session_type = session_types.sample
 
     # Generate a random date within the simulation period
-    session_date = rand(start_date..end_date)
+    session_date = rand(start_date..end_date).to_datetime.change({
+      hour: rand(0..23),
+      min: rand(0..59),
+      sec: rand(0..59)
+    })
 
     # Create a session with random total time (assuming it's in minutes)
     user.pomo_sessions.create(
       session_type: session_type,
-      total_time: rand(5..30) * 60, # Adjust range as needed
-      date: session_date
+      total_secs: rand(5..30) * 60, # Adjust range as needed
+      session_date: session_date
       )
   end
 end

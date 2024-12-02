@@ -53,6 +53,6 @@ class Api::PomoSessionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def pomo_session_params
-    params.permit( :session_type, :total_time, :date)
+    params.permit( :session_type, :total_secs, :session_date)
   end
 end

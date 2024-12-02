@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_15_163818) do
   enable_extension "plpgsql"
 
   create_table "pomo_sessions", force: :cascade do |t|
-    t.string "session_type"
-    t.integer "total_time"
-    t.string "date"
+    t.string "session_type", null: false
+    t.integer "total_secs", null: false
+    t.datetime "session_date", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

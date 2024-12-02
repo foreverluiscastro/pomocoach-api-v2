@@ -15,7 +15,7 @@ class OpenaiService
 
   def call
     body = {
-      model: 'gpt-3.5-turbo', #Choose Model
+      model: 'gpt-4', #Choose Model
       messages: [{ role: 'user', content: query }]
     }
     response = HTTParty.post(api_url, body: body.to_json, headers: options[:headers], timeout: 500)
