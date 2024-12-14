@@ -42,5 +42,16 @@ module PomoCoachApi
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict
+
+    # Enable CORS for requests from the frontend
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'https://pomocoach.netlify.app' # Replace with your actual Netlify app URL
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          credentials: true # Allow cookies to be sent with requests
+      end
+    end
   end
 end
