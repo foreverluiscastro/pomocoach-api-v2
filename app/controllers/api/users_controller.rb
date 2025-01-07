@@ -31,7 +31,7 @@ class Api::UsersController < ApplicationController
   # Method to include the user's profile picture in the response
   def user_with_picture(user)
     user.as_json.merge(
-      profile_picture_url: user.profile_picture.attached? ? url_for(user.profile_picture) : nil
+      profile_picture_url: user.profile_picture.attached? ? user.profile_picture.url : nil
     )
   end
 
