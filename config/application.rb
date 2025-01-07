@@ -5,7 +5,8 @@ require "rails"
 require "active_model/railtie"
 # require "active_job/railtie"
 require "active_record/railtie"
-# require "active_storage/engine"
+require "active_storage/engine"
+require 'activestorage/validator'
 require "action_controller/railtie"
 # require "action_mailer/railtie"
 # require "action_mailbox/engine"
@@ -13,6 +14,9 @@ require "action_controller/railtie"
 require "action_view/railtie"
 # require "action_cable/engine"
 require "rails/test_unit/railtie"
+
+require 'dotenv-rails'
+Dotenv::Rails.load
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -42,5 +46,16 @@ module PomoCoachApi
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict
+
+    # Enable CORS for requests from the frontend
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'https://pomocoach.netlify.app' # Replace with your actual Netlify app URL
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          credentials: true # Allow cookies to be sent with requests
+      end
+    end
   end
 end

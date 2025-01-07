@@ -9,13 +9,20 @@ class Api::OpenaiController < ApplicationController
       **Subject:** Analysis of Study Times to Enhance Efficiency
 
       **Objective:** Provide targeted recommendations to improve user's study routines.
+
       **User Profile:**
       - Current Date: #{current_date}
       - Study Goal: #{@current_user.study_goal}
       - Daily Study Goal: #{@current_user.daily_goal} minutes
       - Additional Details: #{@current_user.details}
+
       **Weekly Study Sessions Summary:**
       #{@current_user.pomo_sessions_for_the_week(time_range, current_date)}
+      **Deliverables:**
+      - Offer actionable strategies to optimize focus habits that fit the user profile information.
+      - Ensure the response is concise and limited to 400 characters.
+      - Focus solely on personalized advice without suggesting other applications.
+
       **Deliverables:**
       - Offer actionable strategies to optimize focus habits that fit the user profile information.
       - Ensure the response is concise and limited to 400 characters.

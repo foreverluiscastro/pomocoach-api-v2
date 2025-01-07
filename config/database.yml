@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: pomo_coach_api_production
-  username: pomo_coach_api
-  password: <%= ENV["POMO_COACH_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: pomo_coach_api_production
+  # username: pomo_coach_api
+  # password: <%= ENV["POMO_COACH_API_DATABASE_PASSWORD"] %>

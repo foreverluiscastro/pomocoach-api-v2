@@ -1,10 +1,15 @@
 class User < ApplicationRecord
+  has_one_attached :profile_picture
+
   has_many :pomo_sessions
 
   has_secure_password
 
   validates :username, presence: true, uniqueness: true
   validates :daily_goal, presence: true
+
+  # TODO: validations for profile pictures
+  # validates :profile_picture, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 5.megabytes }
 
   def pomo_sessions_for_the_week(time_range, date)
     # time_range = params[:time_range] # "this_week"
