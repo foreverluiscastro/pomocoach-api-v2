@@ -18,7 +18,10 @@ class Api::OpenaiController < ApplicationController
 
       **Weekly Study Sessions Summary:**
       #{@current_user.pomo_sessions_for_the_week(time_range, current_date)}
-
+      **Deliverables:**
+      - Offer actionable strategies to optimize focus habits that fit the user profile information.
+      - Ensure the response is concise and limited to 400 characters.
+      - Focus solely on personalized advice without suggesting other applications.
 
       **Deliverables:**
       - Offer actionable strategies to optimize focus habits that fit the user profile information.
